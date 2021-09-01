@@ -18,6 +18,7 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 
 ![lab1](/images/lab1.png)
 ![lab2](/images/lab2.png)
+
 7. For scaling configuration change it as - Parallelism: 4, Parallelism per KPU: 1
 ![lab3](/images/lab3.png)
 
@@ -26,5 +27,15 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 ![lab4](/images/lab4.png)
 10. In this example we have added a security group rule which allows all inbound traffic from the same security group source.
 ![lab5](/images/lab5.png)
+
+11. Ensure AWS supported connectors are selected
+![lab6](/images/lab6.png)
+
+12. Select next and create the notebook
+
+## Working with Kinesis Data Analytics Studio
+1. Go to Kinesis Data Analytics Console: console.aws.amazon.com/kinesisanalytics
+2. Click on the Studio tab and select the notebook you have created in the previous step
+3. Click on Run and Click on Open in Apache Zeppelin once the statue of the Notebook is running
 
 
