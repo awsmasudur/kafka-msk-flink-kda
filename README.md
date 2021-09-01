@@ -15,7 +15,16 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 4. Choose "Create with custom settings" as create method
 5. Enter a notebook name
 6. For AWS Gluedatabse click on the refresh button and select Default Glue database. If the list is still empty, create a new Glue database.
-![lab1](/images/lab1.png)
 
+![lab1](/images/lab1.png)
+![lab2](/images/lab2.png)
+7. For scaling configuration change it as - Parallelism: 4, Parallelism per KPU: 1
+![lab3](/images/lab3.png)
+
+8. For Logging and monitoring - leave it as default
+9. On the networking section, select the VPC of your Amazon MSK cluster. Check all the available subnets and select the security group that you have configurred earlier for your Amazon MSK cluster.
+![lab4](/images/lab4.png)
+10. In this example we have added a security group rule which allows all inbound traffic from the same security group source.
+![lab5](/images/lab5.png)
 
 
