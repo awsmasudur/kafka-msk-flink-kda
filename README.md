@@ -34,8 +34,23 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 12. Select next and create the notebook
 
 ## Working with Kinesis Data Analytics Studio
-1. Go to Kinesis Data Analytics Console: console.aws.amazon.com/kinesisanalytics
+1. Go to Kinesis Data Analytics Console: http://console.aws.amazon.com/kinesisanalytics
 2. Click on the Studio tab and select the notebook you have created in the previous step
 3. Click on Run and Click on Open in Apache Zeppelin once the statue of the Notebook is running
+
+![lab7](/images/lab7.png)
+
+## Working with Kinesis Data Analytics Studio - create a prerequisite notebook
+1. In the notebook console create a new note
+2. enter the name of your notebook- "prerequisite"
+3. Select Default Interprete as Flink and create the notebook
+![lab8](/images/lab8.png)
+
+** We are going to use the Kafka python client (https://kafka-python.readthedocs.io/en/master/) to ingest data to Amazon MSK.
+4. execute the following code to install kafka-python
+``
+%flink.ipyflink
+pip install kafka-python
+``
 
 
