@@ -48,6 +48,7 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 
 ** We are going to use the Kafka python client (https://kafka-python.readthedocs.io/en/master/) to ingest data to Amazon MSK.
 4. execute the following code to install kafka-python
+
 ``
 %flink.ipyflink
 pip install kafka-python
