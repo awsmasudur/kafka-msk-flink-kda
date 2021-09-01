@@ -9,6 +9,13 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 1. Follow the steps mentioned here: https://docs.aws.amazon.com/kinesisanalytics/latest/java/example-notebook-msk.html#example-notebook-msk-nat to add a NAT Gateway to your VPC. 
 
 ## Create Studio notebook
-1.
+1. Go to Kinesis Data Analytics Console: console.aws.amazon.com/kinesisanalytics
+2. Click on the Studio tab
+3. Click on create Studio notebook
+4. Choose "Create with custom settings" as create method
+5. Enter a notebook name
+6. For AWS Gluedatabse click on the refresh button and select Default Glue database. If the list is still empty, create a new Glue database.
+![lab1](/images/lab1.png)
+
 
 
