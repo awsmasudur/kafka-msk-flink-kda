@@ -23,8 +23,10 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 ![lab3](/images/lab3.png)
 
 8. For Logging and monitoring - leave it as default
-9. On the networking section, select the VPC of your Amazon MSK cluster. Check all the available subnets and select the security group that you have configurred earlier for your Amazon MSK cluster.
+9. On the networking section, select "VPC configuration based on Amazon MSK cluster". This will automatically select the all the subnets and the security groupattached to  your Amazon MSK cluster.
+
 ![lab4](/images/lab4.png)
+
 10. In this example we have added a security group rule which allows all inbound traffic from the same security group source.
 ![lab5](/images/lab5.png)
 
@@ -51,6 +53,7 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 
 ``
 %flink.ipyflink
+
 pip install kafka-python
 ``
 
