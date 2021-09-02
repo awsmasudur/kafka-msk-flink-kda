@@ -56,5 +56,5 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 
 pip install kafka-python
 ``
-
+ 
 
