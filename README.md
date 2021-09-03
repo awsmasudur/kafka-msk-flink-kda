@@ -197,7 +197,7 @@ PARTITIONED BY (deviceid)
 WITH  (
  'connector' = 'kafka',
  'topic' = 'kafkadevicestatus',
- 'properties.bootstrap.servers' = 'b-3.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092,b-2.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092,b-1.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092',
+ 'properties.bootstrap.servers' = 'ADD_YOUR_BROKER_NAME-1:9092,ADD_YOUR_BROKER_NAME-2:9092, ADD_YOUR_BROKER_NAME-3:9092',
  'properties.group.id' = 'kafkadevicestatus',
  'format' = 'json',
  'scan.startup.mode' = 'latest-offset'
