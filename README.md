@@ -231,3 +231,27 @@ GROUP BY TUMBLE(event_time, INTERVAL '10' second), lab3.interfacestatus,lab3.mod
 7. Stop the job once you see the data. Change the visualization as below and start the job again.
 
 ![lab11](/images/lab11.png)
+
+
+8. Add a new paragraph and execute the below code. To learn more about Pattern Recognition and CEP check this link: https://ci.apache.org/projects/flink/flink-docs-master/docs/dev/table/sql/queries/match_recognize/.
+
+```
+%flink.ssql(type=update)
+-- The task of the following example is to find the longest period of time for which the average CPUUsage of a device did not go below certain threshold.
+SELECT deviceid, avgCPUUsage
+FROM lab3
+    MATCH_RECOGNIZE (
+        PARTITION BY deviceid
+        ORDER BY event_time
+        MEASURES
+            FIRST(A.event_time) AS start_tstamp,
+            LAST(A.event_time) AS end_tstamp,
+            AVG(A.cpuusage) AS avgCPUUsage
+        ONE ROW PER MATCH
+        AFTER MATCH SKIP PAST LAST ROW
+        PATTERN (A+ B) WITHIN INTERVAL '1' HOUR
+        DEFINE
+            A AS AVG(A.cpuusage) > 95
+    )
+
+```
