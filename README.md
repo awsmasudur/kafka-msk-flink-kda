@@ -60,7 +60,7 @@ pip install kafka-python
 
 ## Generating random data to Amazon MSK
 
-Create a new paragraph and execute the below code. Replace the broker details (BROKERS). To get the MSK broker information, got to Amazon MSK console, Select the Cluster that you have created earlier and copy the bootstrap server name.
+Create a new paragraph and execute the below code. Replace the broker details (BROKERS). To get the MSK broker information, got to Amazon MSK console, Select the Cluster that you have created earlier and copy the bootstrap server name. Create a new topic on your Kafka cluster (kafkadevicestatus) or if you are using existing topic change the 'topicname' in the script. Check this documentation to create a new topic on Amazon MSK: https://docs.aws.amazon.com/msk/latest/developerguide/create-topic.html 
 
 ![lab9](/images/lab9.png)
 
