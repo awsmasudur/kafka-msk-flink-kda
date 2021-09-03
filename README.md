@@ -58,7 +58,9 @@ In this example we will use Kinesis Data Analytics studio to process data from A
 pip install kafka-python
 ```
 
-5. Create a new paragraph and execute the below code. Replace the broker details (BROKERS). To get the MSK broker information, got to Amazon MSK console, Select the Cluster that you have created earlier and copy the bootstrap server name.
+## Generating random data to Amazon MSK
+
+Create a new paragraph and execute the below code. Replace the broker details (BROKERS). To get the MSK broker information, got to Amazon MSK console, Select the Cluster that you have created earlier and copy the bootstrap server name.
 
 ![lab9](/images/lab9.png)
 
@@ -170,3 +172,62 @@ while True:
         
 ```
 
+# Real-time analytics with Flink SQL
+1. In the notebook console create a new note
+2. enter the name of your notebook- "flinkSQLExample"
+3. Select Default Interprete as Flink and create the notebook
+4. Execute the below code. Change the bootstrap server name as you have done earlier to ingest data to your Kafka cluster.
+
+```
+
+%flink.ssql
+
+CREATE TABLE lab3 (
+    model VARCHAR(50),
+    deviceid VARCHAR(50),
+    interface VARCHAR(50),
+    interfacestatus VARCHAR(50),
+    cpuusage DOUBLE,
+    memoryusage DOUBLE,
+    location VARCHAR(100),
+    event_time TIMESTAMP(3),
+    WATERMARK FOR event_time AS event_time - INTERVAL '5' SECOND
+)
+PARTITIONED BY (deviceid)
+WITH  (
+ 'connector' = 'kafka',
+ 'topic' = 'kafkadevicestatus',
+ 'properties.bootstrap.servers' = 'b-3.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092,b-2.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092,b-1.mskkda.atgger.c3.kafka.ap-southeast-2.amazonaws.com:9092',
+ 'properties.group.id' = 'kafkadevicestatus',
+ 'format' = 'json',
+ 'scan.startup.mode' = 'latest-offset'
+)
+
+```
+
+5. Add a new paragraph and start analyzing data in real-time
+
+```
+
+%flink.ssql(type=update)
+select * from lab3
+
+```
+
+![lab10](/images/lab10.png)
+
+6. Add a new paragraph and execute the below code. 
+
+```
+%flink.ssql(type=update)
+--device model wise up time
+SELECT lab3.interfacestatus, COUNT(*) AS totalstatus, lab3.model,
+       TUMBLE_END(event_time, INTERVAL '10' second) as tum_time
+  FROM lab3
+GROUP BY TUMBLE(event_time, INTERVAL '10' second), lab3.interfacestatus,lab3.model;
+
+
+```
+7. Stop the job once you see the data. Change the visualization as below and start the job again.
+
+![lab11](/images/lab11.png)
